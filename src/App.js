@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component, Fragment} from 'react';
+import {Container} from "reactstrap";
+import {Route, Switch} from "react-router-dom";
+import Toolbar from "./components/Toolbar/Toolbar";
+import ArtistsPage from "./containers/ArtistsPage/ArtistsPage";
+import AlbumsPage from "./containers/AlbumsPage/AlbumsPage";
+import TracksPage from "./containers/TracksPage/TracksPage";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <Fragment>
+                <header>
+                    <Toolbar/>
+                </header>
+                <Container style={{marginTop: '20px'}}>
+                    <Switch>
+                        <Route path="/" exact component={ArtistsPage}/>
+                        <Route path="/albums" exact component={AlbumsPage}/>
+                        <Route path="/tracks" exact component={TracksPage}/>
+                    </Switch>
+                </Container>
+            </Fragment>
+        );
+    }
 }
 
 export default App;
