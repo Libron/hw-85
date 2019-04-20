@@ -6,6 +6,7 @@ import ArtistThumbnail from "../../components/ArtistThumbnail/ArtistThumbnail";
 import {NavLink as RouterNavLink} from "react-router-dom";
 
 import './ArtistsPage.css';
+import {setCookie} from "../../cookies";
 
 class ArtistsPage extends Component {
     componentDidMount() {
@@ -19,10 +20,10 @@ class ArtistsPage extends Component {
 
         return (
             <Fragment>
-                <h2>Artist List:</h2>
+                <h2>All Artists <i>({this.props.artists.length})</i></h2>
                 <ListGroup className="Artists">
                     {this.props.artists.map(artist => (
-                        <ListGroupItem className="Item" key={artist._id}>
+                        <ListGroupItem className="Item" key={artist._id} onClick={() => setCookie('artist', artist.name)}>
                             <NavLink className="Link" tag={RouterNavLink} to={`/albums?artist_id=${artist._id}`} exact>
                             <ArtistThumbnail image={artist.image} />
                             <span>{artist.name}</span>

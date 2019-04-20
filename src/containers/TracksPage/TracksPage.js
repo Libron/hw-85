@@ -4,6 +4,7 @@ import connect from "react-redux/es/connect/connect";
 import {fetchTracks} from "../../store/actions/tracksAction";
 
 import './TracksPage.css';
+import {getCookie} from "../../cookies";
 
 class TracksPage extends Component {
     componentDidMount(){
@@ -15,14 +16,14 @@ class TracksPage extends Component {
             return <div>Loading...</div>
         }
 
+        console.log();
         return (
             <Fragment>
-                <h2>{}</h2>
+                <h2>Tracks <span className="labelArtist">{getCookie('artist')}</span> / <span className="labelAlbum">{getCookie('album')}</span></h2>
                 <ListGroup className="Tracks">
                     {this.props.tracks.map(track => (
                         <ListGroupItem className="Item" key={track._id}>
-                            <p className="Album">{track.album.title}</p>
-                            <span className="Track">{track.number}. {track.title} / </span>
+                            <span className="Track">{track.number}. {track.title}</span>
                             <span className="Duration">{track.duration}</span>
                         </ListGroupItem>
                     ))}

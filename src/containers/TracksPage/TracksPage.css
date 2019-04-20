@@ -1,7 +1,8 @@
 .Duration {
     color: black;
+    float: right;
 }
 
 .Track {
-    color: green;
+    color: black;
 }

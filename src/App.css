@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+.labelArtist {
+  color: orange;
+}
+
+.labelAlbum {
+  color: orangered;
+}

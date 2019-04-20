@@ -6,6 +6,8 @@ import ArtistsPage from "./containers/ArtistsPage/ArtistsPage";
 import AlbumsPage from "./containers/AlbumsPage/AlbumsPage";
 import TracksPage from "./containers/TracksPage/TracksPage";
 
+import './App.css';
+
 class App extends Component {
     render() {
         return (

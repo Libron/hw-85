@@ -6,11 +6,14 @@ import {NavLink as RouterNavLink} from "react-router-dom";
 import ArtistThumbnail from "../../components/ArtistThumbnail/ArtistThumbnail";
 
 import './AlbumsPage.css';
+import {getCookie, setCookie} from "../../cookies";
 
 class AlbumsPage extends Component {
     componentDidMount(){
         this.props.fetchAlbums(this.props.location.search);
     };
+
+
 
     render() {
         if (!this.props.albums) {
@@ -19,12 +22,12 @@ class AlbumsPage extends Component {
 
         return (
             <Fragment>
+                <h2>Albums <span className="labelArtist">{getCookie('artist')}</span></h2>
                 <ListGroup className="Artists">
                     {this.props.albums.map(album => (
-                        <ListGroupItem className="Item" key={album._id}>
+                        <ListGroupItem className="Item" key={album._id} onClick={() => setCookie('album', album.title)}>
                             <NavLink className="Link" tag={RouterNavLink} to={`/tracks?album_id=${album._id}`} exact>
                                 <ArtistThumbnail image={album.image} />
-                                <span className="Artist">{album.artist.name} / </span>
                                 <span className="Album">{album.title} / </span>
                                 <span className="Year">{album.year}</span>
                             </NavLink>
