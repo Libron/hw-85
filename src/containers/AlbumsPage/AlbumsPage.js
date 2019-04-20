@@ -5,6 +5,8 @@ import {ListGroup, ListGroupItem, NavLink} from "reactstrap";
 import {NavLink as RouterNavLink} from "react-router-dom";
 import ArtistThumbnail from "../../components/ArtistThumbnail/ArtistThumbnail";
 
+import './AlbumsPage.css';
+
 class AlbumsPage extends Component {
     componentDidMount(){
         this.props.fetchAlbums(this.props.location.search);
@@ -15,16 +17,18 @@ class AlbumsPage extends Component {
             return <div>Loading...</div>
         }
 
+        console.log(this.props.albums);
+
         return (
             <Fragment>
-                <h2>Albums List:</h2>
                 <ListGroup className="Artists">
                     {this.props.albums.map(album => (
                         <ListGroupItem className="Item" key={album._id}>
                             <NavLink className="Link" tag={RouterNavLink} to={`/tracks?album_id=${album._id}`} exact>
                                 <ArtistThumbnail image={album.image} />
-                                <span>{album.title} / </span>
-                                <span>{album.year}</span>
+                                <span className="Artist">{album.artist.name} / </span>
+                                <span className="Album">{album.title} / </span>
+                                <span className="Year">{album.year}</span>
                             </NavLink>
                         </ListGroupItem>
                     ))}

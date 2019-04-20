@@ -11,12 +11,6 @@ const Toolbar = () => {
                         <NavItem>
                             <NavLink tag={RouterNavLink} to="/" exact >Artists</NavLink>
                         </NavItem>
-                        <NavItem>
-                            <NavLink tag={RouterNavLink} to="/albums" exact >Albums</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink tag={RouterNavLink} to="/tracks" exact >Tracks</NavLink>
-                        </NavItem>
                     </Nav>
             </Navbar>
         </div>
