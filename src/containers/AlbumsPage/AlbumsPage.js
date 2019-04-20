@@ -17,8 +17,6 @@ class AlbumsPage extends Component {
             return <div>Loading...</div>
         }
 
-        console.log(this.props.albums);
-
         return (
             <Fragment>
                 <ListGroup className="Artists">
