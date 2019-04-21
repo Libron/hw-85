@@ -13,8 +13,6 @@ class AlbumsPage extends Component {
         this.props.fetchAlbums(this.props.location.search);
     };
 
-
-
     render() {
         if (!this.props.albums) {
             return <div>Loading...</div>
