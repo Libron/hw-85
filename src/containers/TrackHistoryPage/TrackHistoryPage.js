@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {ListGroup, ListGroupItem} from "reactstrap";
+import {Badge, ListGroup, ListGroupItem} from "reactstrap";
 import {fetchHistory} from "../../store/actions/tracksAction";
 import {connect} from "react-redux";
 import {getUserFromStorage} from "../../storage";
@@ -24,7 +24,8 @@ class TrackHistoryPage extends Component {
                 <ListGroup className="Tracks">
                     {this.props.history.map(history => (
                         <ListGroupItem className="Item" key={history._id}>
-                            <span className="Track">{history.user.username} / {history.track.title}</span>
+                            <Badge style={{marginRight: '20px'}} color="info" pill>{history.user.username}</Badge>
+                            <span className="Track">{history.track.title}</span>
                             <span className="Duration">{history.datetime}</span>
                         </ListGroupItem>
                     ))}
