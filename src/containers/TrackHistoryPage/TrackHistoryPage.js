@@ -21,7 +21,7 @@ class TrackHistoryPage extends Component {
         return (
             <Fragment>
                 <h2>Track History ({this.props.history.length})</h2>
-                <ListGroup className="Tracks">
+                <ListGroup className="History">
                     {this.props.history.map(history => (
                         <ListGroupItem className="Item" key={history._id}>
                             <Badge style={{marginRight: '20px'}} color="info" pill>{history.user.username}</Badge>
