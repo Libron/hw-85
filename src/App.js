@@ -5,21 +5,31 @@ import Toolbar from "./components/Toolbar/Toolbar";
 import ArtistsPage from "./containers/ArtistsPage/ArtistsPage";
 import AlbumsPage from "./containers/AlbumsPage/AlbumsPage";
 import TracksPage from "./containers/TracksPage/TracksPage";
+import TrackHistoryPage from "./containers/TrackHistoryPage/TrackHistoryPage";
 
 import './App.css';
+import Register from "./containers/Register/Register";
+import Login from "./containers/Login/Login";
+import {withRouter} from "react-router";
+import {connect} from "react-redux";
+import {logoutUser} from "./store/actions/usersActions";
+import {getUserFromStorage} from "./storage";
 
 class App extends Component {
     render() {
         return (
             <Fragment>
                 <header>
-                    <Toolbar/>
+                    <Toolbar user={getUserFromStorage()} logout={this.props.logout} />
                 </header>
                 <Container style={{marginTop: '20px'}}>
                     <Switch>
                         <Route path="/" exact component={ArtistsPage}/>
                         <Route path="/albums" exact component={AlbumsPage}/>
                         <Route path="/tracks" exact component={TracksPage}/>
+                        <Route path="/register" exact component={Register}/>
+                        <Route path="/login" exact component={Login}/>
+                        <Route path="/track-history" exact component={TrackHistoryPage}/>
                     </Switch>
                 </Container>
             </Fragment>
@@ -27,4 +37,8 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+    logout: () => dispatch(logoutUser())
+});
+
+export default withRouter(connect(null, mapDispatchToProps)(App));

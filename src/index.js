@@ -16,13 +16,15 @@ import App from './App';
 import tracksReducer from "./store/reducers/tracksReducer";
 import artistsReducer from "./store/reducers/artistsReducer";
 import albumsReducer from "./store/reducers/albumsReducer";
+import usersReducer from "./store/reducers/usersReducer";
 const history = createBrowserHistory();
 
 const rootReducer = combineReducers({
     router: connectRouter(history),
     tracks: tracksReducer,
     artists: artistsReducer,
-    albums: albumsReducer
+    albums: albumsReducer,
+    users: usersReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
