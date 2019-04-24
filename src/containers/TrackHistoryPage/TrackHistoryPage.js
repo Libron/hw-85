@@ -2,16 +2,15 @@ import React, {Component, Fragment} from 'react';
 import {Badge, ListGroup, ListGroupItem} from "reactstrap";
 import {fetchHistory} from "../../store/actions/tracksAction";
 import {connect} from "react-redux";
-import {getUserFromStorage} from "../../storage";
 
 class TrackHistoryPage extends Component {
     componentDidMount() {
-        let user = getUserFromStorage();
-        if (!user) {
-            user = '';
+        let token = '';
+        if (this.props.user) {
+            token = this.props.user.token;
         }
-        this.props.fetchHistory(user.token);
-    }
+        this.props.fetchHistory(token);
+    };
 
     render() {
         if (!this.props.history) {
@@ -36,7 +35,8 @@ class TrackHistoryPage extends Component {
 }
 
 const mapStateToProps = state => ({
-    history: state.tracks.history
+    history: state.tracks.history,
+    user: state.users.user
 });
 
 const mapDispatchToProps = dispatch => ({

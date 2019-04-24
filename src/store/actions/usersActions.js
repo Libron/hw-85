@@ -57,6 +57,5 @@ export const logoutUser = () => {
     return dispatch => {
         dispatch(logoutUserRequest());
         dispatch(push('/login'));
-        localStorage.setItem('user', null);
     };
 };

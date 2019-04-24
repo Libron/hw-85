@@ -13,14 +13,13 @@ import Login from "./containers/Login/Login";
 import {withRouter} from "react-router";
 import {connect} from "react-redux";
 import {logoutUser} from "./store/actions/usersActions";
-import {getUserFromStorage} from "./storage";
 
 class App extends Component {
     render() {
         return (
             <Fragment>
                 <header>
-                    <Toolbar user={getUserFromStorage()} logout={this.props.logout} />
+                    <Toolbar user={this.props.user} logout={this.props.logout} />
                 </header>
                 <Container style={{marginTop: '20px'}}>
                     <Switch>
@@ -37,8 +36,12 @@ class App extends Component {
     }
 }
 
+const mapStateToProps = state => ({
+    user: state.users.user
+});
+
 const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logoutUser())
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

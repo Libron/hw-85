@@ -4,7 +4,6 @@ import {
     REGISTER_USER_FAILURE,
     REGISTER_USER_SUCCESS
 } from "../actions/usersActions";
-import {saveUserToStorage} from "../../storage";
 
 const initialState = {
     registerError: null,
@@ -19,7 +18,6 @@ const usersReducer = (state = initialState, action) => {
       case REGISTER_USER_FAILURE:
           return {...state, registerError: action.error};
       case LOGIN_USER_SUCCESS:
-          saveUserToStorage(action.user);
           return {...state, user: action.user, loginError: null};
       case LOGIN_USER_FAILURE:
           return {...state, loginError: action.error};
